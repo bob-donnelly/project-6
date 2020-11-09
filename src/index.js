@@ -16,6 +16,10 @@ async function searchSongs (term) {
     showData (data)
 }
 
+function getLyrics() {
+    
+}
+
 function showData (data) {
 result.innerHTML = `
 <ul class="songs">
@@ -57,3 +61,13 @@ form.addEventListener('submit', e => {
     }
 })
 
+result.addEventListener('click', e => {
+    const clickEl = e.target
+
+    if(clickEl.tagName === "BUTTON") {
+        const artist = clickEl.getAttribute('data-artist')
+        const songTitle = clickEl.getAttribute('data-songTitle')
+    
+    getLyrics(artist, songTitle)
+    }
+})
