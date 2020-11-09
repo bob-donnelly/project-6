@@ -7,7 +7,7 @@ const mroe = document.getElementById('more')
 
 // A link to an api for song lyrics
 
-const apiURL = 'http://api.lyrics.ovh'
+const apiURL = 'https://api.lyrics.ovh'
 
 async function searchSongs (term) {
     const res = await fetch(`${apiURL}/suggest/${term}`)
@@ -55,7 +55,18 @@ if (data.prev || data.next) {
 }
 }
 
+// prev and next buttons
+
+async function getMoreSongs (url) {
+    const res = await fetch ('https://cors-anywhere.herokuapp.com/${url}')
+    const data = await res.json
+    
+    showData(data)
+}
+
 // Event Listeners 
+
+//Form submit
 
 form.addEventListener('submit', e => {
     e.preventDefault()
@@ -68,6 +79,8 @@ form.addEventListener('submit', e => {
         searchSongs(searchTerm)
     }
 })
+
+// Lyrics click button
 
 result.addEventListener('click', e => {
     const clickEl = e.target
