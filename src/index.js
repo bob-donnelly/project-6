@@ -16,8 +16,11 @@ async function searchSongs (term) {
     showData (data)
 }
 
-function getLyrics() {
-    
+async function getLyrics(artist, songTitle) {
+    const res = await fetch (`${apiURL}/v1/${artist}/${songTitle}`)
+    const data = await res.json()
+
+    const lyrics = data.lyrics.replace()
 }
 
 function showData (data) {
