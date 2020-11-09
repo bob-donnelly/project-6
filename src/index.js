@@ -42,3 +42,18 @@ if (data.prev || data.next) {
     more.innerHTML = ''
 }
 }
+
+// Event Listeners 
+
+form.addEventListener('submit', e => {
+    e.preventDefault()
+
+    const searchTerm = search.nodeValue.trim()
+
+    if(!searchTerm) {
+        alert('Please input a search term')
+    } else {
+        searchSongs(searchTerm)
+    }
+})
+
